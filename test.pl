@@ -3,7 +3,7 @@
 
 ######################### We start with some black magic to print on failure.
 
-BEGIN { $| = 1; print "1..13\n"; }
+BEGIN { $| = 1; print "1..14\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use Class::Skin;
 use Log::LogLite;
@@ -325,6 +325,22 @@ $(bla there))) {
 else {
     print "not ok 13\n";
 }
+
+############################### Test 14 ###################################
+# create new Class::Skin object
+$tt = new Class::Skin("templates/template12.txt", $log);
+# read the template file 
+$tt->read();
+$output = $tt->parse({ condition1 => 0,
+		       condition2 => 0 });
+if ($output eq q(
+bar
+)) {
+     print "ok 14\n";
+}
+else {
+    print "not ok 14\n";
+}   
 
 ###################################################################
 

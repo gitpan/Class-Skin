@@ -11,7 +11,7 @@ use AutoLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Carp;
 use strict;

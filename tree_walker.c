@@ -76,7 +76,7 @@ void walk_the_tree(SV * self,
     }
     /* if the condition above was not successful, we should check if there 
        is elsif or else for it */
-    else if (node->children_number > 1 && 
+    else if (node->children_number > 2 && 
 	     (strcmp(node->children[2]->text, "elsif") == 0 ||
 	      strcmp(node->children[2]->text, "else") == 0)) {
       walk_the_tree(self, buffer, node->children[2], vars);
