@@ -305,7 +305,7 @@ struct tnode * root_tnode(struct tnode * node) {
       return node->root;
     }
     else {
-      node;
+      return node;
     }
   }
   else {

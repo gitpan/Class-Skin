@@ -1,5 +1,17 @@
 Revision history for Perl extension Class::Skin.
 
+0.03  Sun Dec 15 22:29:21 CET 2002
+	- Fixed a Segmentation fault. I cannot believe it actually
+	  worked without this fix. But it did. The bug was that I forgot
+	  to write the "return" statement in root_tnode that is in
+	  libskin/skin.y. 
+	  Maybe with the older version of gcc it compiles anyway with
+	  the return, when it was omitted? Anyway, this is fixed. 
+	  For the record, I ran in the past, and ran also today, after
+	  the fix valgrind and found no errors but some leaks. I
+	  cannot deal with those leaks as long as perl itself suffer
+	  from them. Anyway, it looks now stable. But be careful.
+
 0.02  Wed Sep 25 20:58:29 CEST 2002
 	- Added prerequisite module Log::LogLite.
 	- Added the function is_absolute_path that was missing.
