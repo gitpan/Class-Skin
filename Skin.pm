@@ -11,12 +11,11 @@ use AutoLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Carp;
 use strict;
 use Log::NullLogLite;
-use Utils ':all';
 use bytes;
 use Cwd;
 
@@ -202,6 +201,28 @@ sub perl_write_log {
     my $level = shift;
     $self->{LOG}->write($message, $level);
 } # of perl_write_log
+
+######################
+# is_absolute_path
+######################
+sub is_absolute_path {
+    my $path = shift;
+
+    # Returns 1 if path supplied is an absolute path
+    # Returns 0 if path is not absolute.
+    unless (defined($path)) {
+	return 0;
+    }
+    # the different Operating Systems
+    my %operating_systems = ( "mswin32"  => '^[A-Za-z]:',
+			      "linux"    => '^\/',
+			      "cygwin"   => '^([A-Za-z]:)|(\/)');
+    
+    my $os = lc($^O);
+    my $reg_expression = $operating_systems{$os} || 
+	$operating_systems{'linux'};    
+    return $path =~ /$reg_expression/;
+} # is_absolute_path
 
 
 # Autoload methods go after =cut, and are processed by the autosplit program.

@@ -1,5 +1,9 @@
 Revision history for Perl extension Class::Skin.
 
+0.02  Wed Sep 25 20:58:29 CEST 2002
+	- Added prerequisite module Log::LogLite.
+	- Added the function is_absolute_path that was missing.
+
 0.01  Thu Jul 25 10:13:35 2002
 	- original version; created by h2xs 1.21 with options
 		-O -n Class::Skin ./Class/Skin/libskin/skin.h
