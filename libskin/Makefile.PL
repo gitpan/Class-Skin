@@ -3,7 +3,7 @@ $Verbose = 0;
 WriteMakefile(
 	      NAME       => 'Class::Skin::skin',
 	      SKIP       => [qw(all static static_lib dynamic dynamic_lib)],
-	      LIBS       => ['-ll -lm'],
+	      LIBS       => ['-lfl -lm'],
 	      INC        => '',
 	      clean      => {'FILES' => 'libskin$(LIBEEXT) y.output lex.yy.c y.tab.c y.tab.h'},
               OPTIMIZE   => '-O' # '-g' 

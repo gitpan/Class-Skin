@@ -11,7 +11,7 @@ use AutoLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use Carp;
 use strict;
@@ -214,9 +214,9 @@ sub is_absolute_path {
 	return 0;
     }
     # the different Operating Systems
-    my %operating_systems = ( "mswin32"  => '^[A-Za-z]:',
+    my %operating_systems = ( "mswin32"  => '^(?:[a-zA-Z]:)?[\\\/]+',
 			      "linux"    => '^\/',
-			      "cygwin"   => '^([A-Za-z]:)|(\/)');
+			      "cygwin"   => '^([A-Za-z]:)|^(\/)');
     
     my $os = lc($^O);
     my $reg_expression = $operating_systems{$os} || 

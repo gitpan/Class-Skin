@@ -297,11 +297,11 @@ $output = $tt->parse({  });
 open(FILE, ">output12.txt");
 print FILE $output."\n";
 close(FILE);
-if (`/usr/bin/diff output12.txt templates/result12.txt`) {
-    print "not ok 12\n";
+if (do_files_equal("output12.txt", "templates/result12.txt")) {
+    print "ok 12\n";
 }
 else {
-    print "ok 12\n";
+    print "not ok 12\n";
 }
 
 ############################### Test 13 ###################################
@@ -347,7 +347,7 @@ else {
 unlink("templates/t/a/included_template.txt");
 rmdir("templates/t/a");
 rmdir("templates/t");
-unlink("output12.txt");
+#unlink("output12.txt");
 
 
 # callback function. we will give a reference to that function as 
@@ -430,3 +430,31 @@ sub clean_whites {
     $str =~ s/\s$//;
     return $str;
 } # of clean_whites
+
+
+#####################
+# do_file_equal
+#####################
+sub do_files_equal {
+    my $path1 = shift;
+    my $path2 = shift;
+    open(FILE1, $path1);
+    open(FILE2, $path2);
+    while (1) {
+	my $line1 = <FILE1>;
+	my $line2 = <FILE2>;
+	if (!defined($line1) && !defined($line2)) {
+	    last;
+	}
+	chomp($line1);
+	chomp($line2);
+	if ($line1 ne $line2) {
+	    close(FILE1);
+	    close(FILE2);
+	    return 0;
+	}
+    }
+    close(FILE1);
+    close(FILE2);
+    return 1;
+} # do_file_equal

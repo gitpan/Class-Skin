@@ -1,5 +1,10 @@
 Revision history for Perl extension Class::Skin.
 
+0.05  Wed Feb 19 12:55:54 CET 2003
+	- Could not identify correctly absolute paths in cygwin. Now 
+	  it can.
+	- The -ll flag was changed to -lfl (for using flex). 
+
 0.04  Mon Jan 20 11:11:18 CET 2003
 	- Fixed another Segmentation fault. In tree_walker.c line 79, 
 	  it was not checking for the right number of node children. 
